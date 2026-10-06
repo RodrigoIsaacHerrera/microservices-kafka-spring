@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.sh/.clear-data-volumes
+.sh/.clear-data-volumes.*

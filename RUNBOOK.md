@@ -31,6 +31,16 @@ docker compose logs db-storage
 
 The application datasource defaults use these published host ports. The Compose credentials are for local development only; do not reuse them outside a local environment.
 
+The equivalent Bash scripts are available under `.sh/`:
+
+```sh
+bash .sh/start.sh
+bash .sh/stop.sh
+bash .sh/clear.sh
+```
+
+`start.sh` invokes `build.sh` and then starts the Compose services. The current Compose file has no `build:` targets and only uses upstream database images, so no application image is built. These scripts start/stop only the three database containers; the Spring services are still run with the Maven commands below. `stop.sh` stops the databases and then invokes `clear.sh --yes`, removing the containers and their associated images without deleting their data volumes. Since these are anonymous Docker volumes, a later `start.sh` may create new volumes rather than reconnecting to the preserved ones. Run `bash .sh/clear-data.sh` separately to permanently delete the database data volumes; it asks for confirmation and preserves the images. `clear.sh` can also be run independently and asks for confirmation by default.
+
 ## Build and test all services
 
 From the repository root:
@@ -86,13 +96,13 @@ The create endpoint returns HTTP `201` with no response body. Run the `GET` requ
 
 ## Stop the project
 
-Stop the service processes with **Ctrl+C** in their terminals, then stop the databases:
+Stop the service processes with **Ctrl+C** in their terminals, then run the Bash cleanup script:
 
-```powershell
-docker compose stop
+```sh
+bash .sh/stop.sh
 ```
 
-Use `docker compose down` only when you intend to remove the database containers. The Compose file does not define persistent volumes, so removing those containers also removes their local database data.
+`stop.sh` removes the database containers and their images while preserving the data volumes. To remove the data volumes too, run `bash .sh/clear-data.sh`; this also removes any remaining database containers but preserves the images. If you only want to stop the databases without removing their containers, use `docker compose stop`.
 
 ## Troubleshooting
 
