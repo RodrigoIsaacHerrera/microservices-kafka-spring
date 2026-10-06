@@ -115,7 +115,7 @@
     - Result: ✅ Build and verify passed; 3/3 tests passed; all DB containers healthy
     - Notes: JaCoCo is not configured, so no coverage report was generated; base JDK 17 baseline was unavailable
   - **Deferred Work**: None
-  - **Commit**: Pending
+  - **Commit**: 4785e12ce5c2c10e04d064235b36d7f3ea4bd893 - Step 6: Final Validation - Compile: SUCCESS, Tests: 3/3 passed
 
 ---
 
