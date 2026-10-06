@@ -58,27 +58,30 @@
     - Result: ✅ SUCCESS
     - Notes: Initial build exposed invalid child parent paths; corrected all three before successful rebuild
   - **Deferred Work**: None
-  - **Commit**: Pending
+  - **Commit**: 468c503cdea652da26c55b943d31019214e68fe7 - Step 3: Upgrade Java Target - Compile: SUCCESS
 
 - **Step 4: Repair Module Database Container Connectivity**
-  - **Status**: ⏳ In Progress
+  - **Status**: ✅ Completed
   - **Changes Made**:
+    - Corrected PostgreSQL and MySQL host-to-container port mappings
+    - Added health checks for each module database
+    - Fixed datasource URLs and username keys; enabled URL overrides
   - **Review Code Changes**:
-    - Sufficiency: Pending
-    - Necessity: Pending
-      - Functional Behavior: Pending
-      - Security Controls: Pending
+    - Sufficiency: ✅ All module datasource settings match their database container ports
+    - Necessity: ✅ Only database settings needed for correct host/container connectivity
+      - Functional Behavior: ✅ Preserved; connection targets corrected
+      - Security Controls: ✅ Existing credential handling preserved
   - **Verification**:
-    - Command: Docker Compose config and database health checks
+    - Command: `docker compose config --quiet`; `docker compose up -d --wait`; Maven `package -DskipTests`; start all services
     - JDK: `C:\Users\Rodri\AppData\Local\jdks\jdk-25.0.2\bin`
     - Build tool: Maven Wrapper 3.9.16
-    - Result: Not run
-    - Notes: Pending
+    - Result: ✅ Compose valid; all databases healthy and host ports reachable; all three Spring services started
+    - Notes: Initial HTTP probe occurred during startup; repeated probe after startup passed on all service ports
   - **Deferred Work**: None
   - **Commit**: Pending
 
 - **Step 5: CVE Validation**
-  - **Status**: 🔘 Not Started
+  - **Status**: ⏳ In Progress
   - **Changes Made**:
   - **Review Code Changes**:
     - Sufficiency: Pending
