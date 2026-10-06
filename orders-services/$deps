@@ -1,0 +1,9 @@
+The following files have been resolved:
+   org.springframework.boot:spring-boot-starter-data-jpa:jar:4.1.1:compile -- module spring.boot.starter.data.jpa [auto]
+   org.springframework.boot:spring-boot-starter-webmvc:jar:4.1.1:compile -- module spring.boot.starter.webmvc [auto]
+   org.springframework.boot:spring-boot-devtools:jar:4.1.1:runtime (optional) -- module spring.boot.devtools [auto]
+   com.mysql:mysql-connector-j:jar:9.7.0:runtime -- module mysql.connector.j (auto)
+   org.projectlombok:lombok:jar:1.18.46:compile (optional) -- module lombok
+   org.springframework.boot:spring-boot-starter-data-jpa-test:jar:4.1.1:test -- module spring.boot.starter.data.jpa.test [auto]
+   org.springframework.boot:spring-boot-starter-webmvc-test:jar:4.1.1:test -- module spring.boot.starter.webmvc.test [auto]
+
